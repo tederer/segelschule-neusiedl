@@ -1,0 +1,22 @@
+{
+   "name": "segelschule-neusiedl-service",
+   "version": "0.1.0",
+   "description": "frontend part for Segelschule Neusiedl",
+   "private": true,
+   "author": {
+      "name": "Thomas Ederer",
+      "email": "thomas@neusiedl.coderdojo.net"
+   },
+   "licenses": [
+      {
+         "type": "BSD-3-Clause"
+      }
+   ],
+   "dependencies": {
+      "express": "4.x"
+   },
+   "devDependencies": {},
+   "engines": {
+      "node": ">=12.16.2"
+   }
+}
