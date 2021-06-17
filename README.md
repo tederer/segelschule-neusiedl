@@ -22,13 +22,13 @@ For a successful execution of the service you need to set the mandatory environm
 
 The calculated average values (1min and 10min) can be polled by using a HTTP GET request to `/windsensor/averages?<apiKey>` (don't foregt to replace `<apiKey>` with the apiKey of the service).
 
-The format of the response is the same as described in [windsensor-service](https://github.com/tederer/windsensor-service).
+The format of the response is the same as described in [windsensor-service](https://github.com/tederer/windsensor-service#output-message-format).
 
 ## Polling the current wind history
 
 The wind history can be polled by using a HTTP GET request to `/windsensor/history?<apiKey>` (don't forget to replace `<apiKey>` with the apiKey of the service).
 
-The format of the response is the same as described in [windsensor-service](https://github.com/tederer/windsensor-service).
+The format of the response is the same as described in [windsensor-service](https://github.com/tederer/windsensor-service#output-message-format).
 
 ## Polling container informations
 
