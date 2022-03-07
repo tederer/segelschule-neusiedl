@@ -15,6 +15,7 @@ var sensorUrl              = process.env.SENSOR_URL;
 var sensorId               = process.env.SENSOR_ID;
 var apiKey                 = process.env.API_KEY;
 var webserverPort          = process.env.WEBSERVER_PORT;
+var allowedOrigin          = process.env.ALLOWED_ORIGIN;
 var app                    = express();
 
 var windAverages;
@@ -153,6 +154,10 @@ var sendData = function sendData(request, response, dataSupplier) {
    if (apiKeyIsCorrect(request)) {
       asynchronuouslyUpdateDataIfNecessary();
       var data = dataSupplier();
+      var origin = request.get('origin');
+      if (allowedOrigin !== undefined && origin === allowedOrigin) {
+         response.append('Access-Control-Allow-Origin', allowedOrigin);
+      }
       response.status(200).json(data !== undefined ? data : {});
    } else {
        response.status(400).send('invalid request');
@@ -163,9 +168,12 @@ assertValidSensorUrl();
 assertValidSensorId();
 assertValidApiKey();
 
-LOGGER.logInfo('sensor URL = ' + sensorUrl);
-LOGGER.logInfo('sensor ID  = ' + sensorId);
-LOGGER.logInfo('API key    = ' + apiKey);
+LOGGER.logInfo('sensor URL     = ' + sensorUrl);
+LOGGER.logInfo('sensor ID      = ' + sensorId);
+LOGGER.logInfo('API key        = ' + apiKey);
+if (allowedOrigin !== undefined) {
+LOGGER.logInfo('allowed origin = ' + allowedOrigin);   
+}
 
 app.get(/\/windsensor\/averages/, (request, response) => sendData(request, response, () => windAverages));
 

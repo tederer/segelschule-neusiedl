@@ -15,6 +15,7 @@ For a successful execution of the service you need to set the mandatory environm
 |SENSOR_URL      |yes      |string|The URL of the [windsensor-service](https://github.com/tederer/windsensor-service) that provides the wind data.|
 |SENSOR_ID       |yes      |string|The ID of the windsensor-service.|
 |API_KEY         |yes      |string|The key that allows you to use the API of this service.|
+|ALLOWED_ORIGIN  |no       |string|The URL provided in the origin request header field for which the CORS response header field shall get set.|
 |WEBSERVER_PORT  |no       |integer|The port the webserver shall use (default=80).|
 |LOG_LEVEL       |no       |string |one of [DEBUG, INFO, WARNING, ERROR, OFF]|
 
