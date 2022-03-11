@@ -155,8 +155,13 @@ var sendData = function sendData(request, response, dataSupplier) {
       asynchronuouslyUpdateDataIfNecessary();
       var data = dataSupplier();
       var origin = request.get('origin');
-      if (allowedOrigin !== undefined && origin === allowedOrigin) {
-         response.append('Access-Control-Allow-Origin', allowedOrigin);
+      if ((allowedOrigin !== undefined) && (origin !== undefined)) {
+         try {
+            var originUrl = new URL(origin);
+            if (originUrl.hostname.endsWith(allowedOrigin)) {
+               response.append('Access-Control-Allow-Origin', origin);
+            }
+         } catch(e) {}
       }
       response.status(200).json(data !== undefined ? data : {});
    } else {
